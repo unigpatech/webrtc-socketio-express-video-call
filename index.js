@@ -2,19 +2,13 @@ const express = require("express");
 const socket = require("socket.io");
 const app = express();
 
-//Starts the server
-
 let server = app.listen(4000, function () {
   console.log("Server is running");
 });
 
 app.use(express.static("public"));
 
-//Upgrades the server to accept websockets.
-
 let io = socket(server);
-
-//Triggered when a client is connected.
 
 io.on("connection", function (socket) {
   console.log("User Connected :" + socket.id);
